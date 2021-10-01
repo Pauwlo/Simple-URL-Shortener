@@ -13,7 +13,7 @@ class Redirection extends Model
      * @param string $name
      * @param string $destination
      * @param int $accessCount
-     * @param \Carbon\Carbon $accessedAt
+     * @param null|\Carbon\Carbon $accessedAt
      * @return void
      */
     public function __construct(
@@ -133,9 +133,9 @@ class Redirection extends Model
     /**
      * Get the last time the redirection was resolved.
      * 
-     * @return \Carbon\Carbon
+     * @return null|\Carbon\Carbon
      */
-    public function getAccessedAt(): Carbon
+    public function getAccessedAt(): ?Carbon
     {
         return $this->accessedAt;
     }
