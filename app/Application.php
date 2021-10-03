@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Http\Request;
+
 class Application
 {
     /**
@@ -10,6 +12,13 @@ class Application
      * @var \App\Application
      */
     private static $instance;
+
+    /**
+     * The incoming request.
+     * 
+     * @var \App\Http\Request
+     */
+    private Request $request;
 
     /**
      * Return a unique instance of the application.
@@ -25,7 +34,15 @@ class Application
         return static::$instance;
     }
 
-    private function __construct() {}
+    /**
+     * Create an application instance.
+     * 
+     * @return void
+     */
+    private function __construct()
+    {
+        $this->request = Request::createFromGlobals();
+    }
 
     /**
      * Run the application.
